@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --glass-bg: hsla(230, 25%, 18%, 0.45);
+  --glass-border: hsla(230, 40%, 60%, 0.15);
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.25);
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -10,13 +17,61 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  color: hsl(210, 30%, 15%);
-  background: hsl(0, 0%, 100%);
+  color: hsl(220, 20%, 88%);
+  background: hsl(230, 25%, 8%);
+}
+
+/* Glass card utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-light {
+  background: hsla(230, 25%, 22%, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsla(230, 40%, 60%, 0.1);
+}
+
+.glass-nav {
+  background: hsla(230, 25%, 10%, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid hsla(230, 40%, 60%, 0.1);
+}
+
+/* Gradient orb backgrounds */
+.orb-gradient::before,
+.orb-gradient::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.orb-gradient::before {
+  width: 500px;
+  height: 500px;
+  background: hsl(263, 70%, 55%);
+  top: -10%;
+  left: -10%;
+}
+.orb-gradient::after {
+  width: 400px;
+  height: 400px;
+  background: hsl(200, 80%, 50%);
+  bottom: -10%;
+  right: -10%;
 }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 
 .animate-fade-up {
